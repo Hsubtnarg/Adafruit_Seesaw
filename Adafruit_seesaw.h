@@ -199,6 +199,17 @@ enum {
 #define SEESAW_HW_ID_CODE_TINY1617 0x89 ///< seesaw HW ID code for ATtiny1617
 // clang-format on
 
+// ESP32 core macros remove
+#ifdef ARDUINO_ARCH_ESP32
+#undef pinMode
+#undef analogWrite
+#undef analogRead
+#undef digitalWrite
+#undef digitalRead
+#undef touchRead
+#endif
+
+
 /** raw key event stucture for keypad module */
 union keyEventRaw {
   struct {
