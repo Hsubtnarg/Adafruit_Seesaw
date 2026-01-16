@@ -209,7 +209,6 @@ enum {
 #undef touchRead
 #endif
 
-
 /** raw key event stucture for keypad module */
 union keyEventRaw {
   struct {
