@@ -31,6 +31,22 @@
 #define SEESAW_ADDRESS (0x49) ///< Default Seesaw I2C address
 /*=========================================================================*/
 
+// ESP32 core has macros that interfere with the compilation
+#ifdef ARDUINO_ARCH_ESP32
+#pragma push_macro("pinMode")
+#undef pinMode
+#pragma push_macro("analogWrite")
+#undef analogWrite
+#pragma push_macro("analogRead")
+#undef analogRead
+#pragma push_macro("digitalRead")
+#undef digitalRead
+#pragma push_macro("digitalWrite")
+#undef digitalWrite
+#pragma push_macro("touchRead")
+#undef touchRead
+#endif
+
 /*=========================================================================
     REGISTERS
     -----------------------------------------------------------------------*/
@@ -199,16 +215,6 @@ enum {
 #define SEESAW_HW_ID_CODE_TINY1617 0x89 ///< seesaw HW ID code for ATtiny1617
 // clang-format on
 
-// ESP32 core macros remove
-#ifdef ARDUINO_ARCH_ESP32
-#undef pinMode
-#undef analogWrite
-#undef analogRead
-#undef digitalWrite
-#undef digitalRead
-#undef touchRead
-#endif
-
 /** raw key event stucture for keypad module */
 union keyEventRaw {
   struct {
@@ -342,4 +348,14 @@ protected:
   /*=========================================================================*/
 };
 
+#endif
+
+// ESP32 core macros reinstate
+#ifdef ARDUINO_ARCH_ESP32
+#pragma pop_macro("touchRead")
+#pragma pop_macro("digitalWrite")
+#pragma pop_macro("digitalRead")
+#pragma pop_macro("analogRead")
+#pragma pop_macro("analogWrite")
+#pragma pop_macro("pinMode")
 #endif
