@@ -1,6 +1,6 @@
 #include "Adafruit_Crickit.h"
 
-// ESP32 core has macros that interfere with the compilation
+// ESP32 core has macros that interfere with the compilation
 #ifdef ARDUINO_ARCH_ESP32
 #pragma push_macro("pinMode")
 #undef pinMode
