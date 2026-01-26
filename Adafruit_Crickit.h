@@ -52,7 +52,7 @@
 
 /**************************************************************************/
 /*!
-    @brief  Class that stores state and functions for interacting with Crickit
+   @brief  Class that stores state and functions for interacting with Crickit
    variant of seesaw helper IC
 */
 /**************************************************************************/
